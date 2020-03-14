@@ -1,0 +1,17 @@
+Author: Pentti Lähdeaho <pentti.lahdeaho@gmail.com>
+Date:   Sat Mar 14 15:56:12 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 201b7bd476ea1ffe0016b79411593b09e21a2bfb
+Author: Pentti Lähdeaho <pentti.lahdeaho@gmail.com>
+Date:   Sat Mar 14 15:54:07 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-) 
