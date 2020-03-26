@@ -8,6 +8,6 @@
   
 ## Dokumentaatio
 
-[Vaativuusmäärittely](https://github.com/Pentza/ot-harjoitustyo/blob/master/documentation/vaativuusmaarittely.md)
+[Vaativuusmäärittely](https://github.com/Pentza/ot-harjoitustyo/blob/master/documentation/vaativuusmaarittely.md)  
 [Työaikakirjanpito](https://github.com/Pentza/ot-harjoitustyo/blob/master/documentation/tyoaikakirjanpito.md)
 
