@@ -1,10 +1,7 @@
 # Ohjelmistotekniikka, harjoitustyö
-## Tehtävät
-### Viikko1
+## Sudoku
 
-[komentorivi.txt](https://github.com/Pentza/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)  
-
-[gitlog.txt](https://github.com/Pentza/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+Sovelluksella on tarkoitus pelata klassista sudoku peliä. Pelissä on valmiina ratkaistavia pohjia ja peli itse osaa ratkaista pulmat.
   
 ## Dokumentaatio
 
