@@ -6,6 +6,7 @@
 package ui;
 
 import domain.Sudoku;
+import domain.SudokuSolver;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +33,14 @@ import javafx.stage.Stage;
  */
 public class SudokuUi extends Application {
     private Sudoku sudoku;
+    private SudokuSolver solver;
     private List<KeyCode> validNumbers;
     private Button[][] buttons;
 
     @Override
     public void start(Stage stage) throws Exception {
         sudoku = new Sudoku();    
+        solver = new SudokuSolver();
         validNumbers = new ArrayList<>();
         validNumbers.add(KeyCode.DIGIT0);
         validNumbers.add(KeyCode.DIGIT1);
@@ -95,8 +98,8 @@ public class SudokuUi extends Application {
             this.update();
         });
         solve.setOnAction(e -> {
-            //sudoku.solve();
-            //this.update();
+            solver.solve(sudoku.getGrid());
+            this.update();
         });
 
         root.setCenter(menuButtons);
