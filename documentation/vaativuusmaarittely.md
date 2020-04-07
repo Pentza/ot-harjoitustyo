@@ -8,11 +8,11 @@ Tarkoituksena on luoda pelialusta, jolla pelata Sudoku-peliä. Joko luoda oma su
 
 - pelaaja voi luoda oman pohjan tai pelata valmiita pohjia
 
-- pelaaja voi valita solun johon laittaa numero tai niin sanottu "pencil mark"
+- pelaaja voi valita solun johon laittaa numero tai niin sanottu "pencil mark" //numeron syöttäminen ok
 
 - pelaaja voi tarkistaa onko vastaus oikein
 
 ## Ideoita
 
-- visuaalinen sudoku solver
+- visuaalinen sudoku solver // solver toimii, ei visuaalinen
 - sudokupohjia verkossa (helppo, keskivaikea, vaikea)
