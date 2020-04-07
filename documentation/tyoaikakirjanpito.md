@@ -6,3 +6,5 @@
 | 27.03. |  2   | JavaFX:n toimimisen kanssa tappelua   |
 |31.03.  |  2   | Alustavaa toiminnallisuutta ja testia |
 |03.04.  |  3   | Taistelua Javan kanssa + checkstyle   |
+| 07.04. | 2    | SudokuSolverin rakentelua ja testejä |
+|Yht.    | 11 ||
