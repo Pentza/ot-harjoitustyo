@@ -17,23 +17,23 @@ Sovelluksella on tarkoitus pelata klassista sudoku peliä. Pelissä on valmiina 
 
 Testit suoritetaan komennolla  
 
-´´´
+```
 mvn test
-´´´
+```
 
 Testikattavuusraportti luodaan komennolla  
 
-´´´
+```
 mvn jacoco:report
-´´´
+```
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedoston target/site/jacoco/index.html  
 
 ### Suoritettavan jarin generointi
 
-´´´
+```
 mvn package  
-´´´
+```
 
 generoi hakemistoon target suoritettavan jar-tiedoston SudokuSovellus-1.0-SNAPSHOT.jar  
 
@@ -41,8 +41,8 @@ generoi hakemistoon target suoritettavan jar-tiedoston SudokuSovellus-1.0-SNAPSH
 
 Tiedostoon checkstyle.xml määrittelemäs tarkistukset suoritetaan komennolla  
 
-´´´
+```
 mvn jxr:jxr checkstyle:checkstyle
-´´´
+```
 
 Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto target/site/checkstyle.html
