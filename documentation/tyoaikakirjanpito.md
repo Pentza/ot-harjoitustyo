@@ -7,4 +7,6 @@
 |31.03.  |  2   | Alustavaa toiminnallisuutta ja testia |
 |03.04.  |  3   | Taistelua Javan kanssa + checkstyle   |
 | 07.04. | 2    | SudokuSolverin rakentelua ja testejä |
-|Yht.    | 11 ||
+| 14.04. | 1    | Päivitystä   |
+| 21.04. | 1    | Checkstylen päivitys, release ja muuta |
+|Yht.    | 13 ||
