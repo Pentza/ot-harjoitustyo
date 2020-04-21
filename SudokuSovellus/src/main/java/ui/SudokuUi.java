@@ -73,9 +73,10 @@ public class SudokuUi extends Application {
         Button playHard = new Button("Hard");
         Button solve = new Button("Solve");
         Button clear = new Button("Clear");
+        Text solved = new Text();
 
         menuButtons.getChildren().add(play);
-        gameButtons.getChildren().addAll(solve, clear);
+        gameButtons.getChildren().addAll(solved, solve, clear);
 
         play.setOnAction(e -> {
             menuButtons.getChildren().remove(play);
@@ -98,8 +99,12 @@ public class SudokuUi extends Application {
             this.update();
         });
         solve.setOnAction(e -> {
-            solver.solve(sudoku.getGrid());
-            this.update();
+            if (solver.solve(sudoku.getGrid())) {
+                solved.setText("Solved!");
+                this.update();
+            } else {
+                solved.setText("Not solvable");
+            }
         });
 
         root.setCenter(menuButtons);
@@ -136,6 +141,11 @@ public class SudokuUi extends Application {
         Button btn = new Button();
         btn.setPrefSize(40, 40);    
         btn.setFont(Font.font(18));
+        if (sudoku.getNumeber(x, y) != 0) {
+            btn.setText(String.valueOf(sudoku.getNumeber(x, y)));
+            btn.setDisable(true);
+            
+        }
         
         btn.setOnKeyPressed(key -> {
             KeyCode keyCode = key.getCode();
