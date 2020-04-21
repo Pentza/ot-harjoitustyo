@@ -14,7 +14,7 @@ public class Sudoku {
     
     public Sudoku() {
         grid = new int[9][9];
-        grid[0][0] = 8;
+        /*grid[0][0] = 8;
         grid[1][2] = 3;
         grid[1][3] = 6;
         grid[2][1] = 7;
@@ -34,7 +34,7 @@ public class Sudoku {
         grid[7][3] = 5;
         grid[7][7] = 1;
         grid[8][2] = 9;
-        grid[8][6] = 4;
+        grid[8][6] = 4;*/
     }
     
     public int[][] getGrid() {
