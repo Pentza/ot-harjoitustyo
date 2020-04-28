@@ -129,6 +129,6 @@ public class SudokuSolverTest {
     
     @Test
     public void doesntContainZerosTest() {
-        assertEquals(true, solver.sudokuContainsZeros(solvedGrid));
+        assertEquals(false, solver.sudokuContainsZeros(solvedGrid));
     }
 }
