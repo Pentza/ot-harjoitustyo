@@ -9,4 +9,5 @@
 | 07.04. | 2    | SudokuSolverin rakentelua ja testejä |
 | 14.04. | 1    | Päivitystä   |
 | 21.04. | 1    | Checkstylen päivitys, release ja muuta |
-|Yht.    | 13 ||
+| 28.04. | 3    | Testejä, muutamia metodeita ja UIn kanssa tappelua |
+|Yht.    | 16 ||
