@@ -5,6 +5,9 @@
  */
 package domain;
 
+import dao.ScoreDao;
+import dao.SqlDao;
+
 /**
  *
  * @author pewlahde
@@ -18,6 +21,8 @@ public class Sudoku {
     public Sudoku() {
         grid = new int[9][9];
         solvedGrid = new int[9][9];
+
+        ScoreDao scoredao = new SqlDao();
 
         /*grid[0][0] = 5;
         grid[0][5] = 1;
