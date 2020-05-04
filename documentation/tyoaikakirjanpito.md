@@ -10,4 +10,5 @@
 | 14.04. | 1    | Päivitystä   |
 | 21.04. | 1    | Checkstylen päivitys, release ja muuta |
 | 28.04. | 3    | Testejä, muutamia metodeita ja UIn kanssa tappelua |
-|Yht.    | 16 ||
+| 04.05. | 2    | Dao ja sql pisteitä varten |
+|Yht.    | 18 ||
