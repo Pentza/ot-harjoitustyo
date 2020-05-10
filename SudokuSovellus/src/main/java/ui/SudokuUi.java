@@ -31,15 +31,21 @@ import javafx.stage.Stage;
  * @author pewlahde
  */
 public class SudokuUi extends Application {
+
     private Sudoku sudoku;
     private SudokuSolver solver;
     private List<KeyCode> validNumbers;
     private Button[][] buttons;
     private Timer timer;
+    private Text solved;
+
+    @Override
+    public void init() throws Exception {
+        sudoku = new Sudoku();
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
-        sudoku = new Sudoku();    
         solver = new SudokuSolver();
         timer = new Timer();
         validNumbers = new ArrayList<>();
@@ -53,19 +59,19 @@ public class SudokuUi extends Application {
         validNumbers.add(KeyCode.DIGIT7);
         validNumbers.add(KeyCode.DIGIT8);
         validNumbers.add(KeyCode.DIGIT9);
-                
+
         BorderPane root = new BorderPane();
 
         //Menu buttons
         VBox menuButtons = new VBox();
         menuButtons.setAlignment(Pos.CENTER);
         menuButtons.setSpacing(20);
-        
+
         VBox gameButtons = new VBox();
         gameButtons.setAlignment(Pos.CENTER);
         gameButtons.setSpacing(20);
         gameButtons.setPadding(new Insets(30));
-        
+
         HBox gameTime = new HBox();
         gameTime.setAlignment(Pos.CENTER);
         gameButtons.setSpacing(20);
@@ -78,10 +84,11 @@ public class SudokuUi extends Application {
         Button solve = new Button("Solve");
         Button check = new Button("Check");
         Button clear = new Button("Clear");
-        Text solved = new Text();
+        Button back = new Button("Back");
+        solved = new Text();
 
         menuButtons.getChildren().add(play);
-        gameButtons.getChildren().addAll(solved, solve, check, clear);
+        gameButtons.getChildren().addAll(solved, solve, check, clear, back);
         gameTime.getChildren().add(timer.getTimer());
 
         play.setOnAction(e -> {
@@ -89,20 +96,26 @@ public class SudokuUi extends Application {
             menuButtons.getChildren().addAll(playEasy, playMedium, playHard);
         });
         playEasy.setOnAction(e -> {
+            timer.start();
+            sudoku.setGridFromDatabase("easy");
             root.setCenter(drawGrid(sudoku.getGrid()));
             root.setRight(gameButtons);
             root.setTop(gameTime);
-            timer.start();
         });
         playMedium.setOnAction(e -> {
+            timer.start();
+            sudoku.setGridFromDatabase("medium");
             root.setCenter(drawGrid(sudoku.getGrid()));
             root.setRight(gameButtons);
             root.setTop(gameTime);
         });
         playHard.setOnAction(e -> {
+            timer.start();
+            sudoku.setGridFromDatabase("hard");
             root.setCenter(drawGrid(sudoku.getGrid()));
             root.setRight(gameButtons);
             root.setTop(gameTime);
+            
         });
         clear.setOnAction(e -> {
             sudoku.clearGrid();
@@ -126,6 +139,11 @@ public class SudokuUi extends Application {
                 solved.setText("Not solvable");
             }
         });
+        back.setOnAction(e -> {
+            root.setTop(null);
+            root.setRight(null);
+            root.setCenter(menuButtons);
+        });
 
         root.setCenter(menuButtons);
 
@@ -141,14 +159,14 @@ public class SudokuUi extends Application {
         board.setAlignment(Pos.CENTER);
         //board.setPadding(new Insets(10,10,10,10));
         buttons = new Button[9][9];
-        
+
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
 //                Rectangle btn = new Rectangle(40, 40);
 //                Text txt = new Text(String.valueOf(grid[row][column]));
 //                btn.setFill(null);
 //                btn.setStroke(Color.BLACK);
-              
+
                 Button btn = createButton(column, row);
                 buttons[row][column] = btn;
                 board.add(btn, column, row);
@@ -156,17 +174,18 @@ public class SudokuUi extends Application {
         }
         return board;
     }
-    
+
     public Button createButton(int x, int y) {
         Button btn = new Button();
-        btn.setPrefSize(40, 40);    
+        btn.setPrefSize(40, 40);
         btn.setFont(Font.font(18));
         if (sudoku.getNumeber(x, y) != 0) {
             btn.setText(String.valueOf(sudoku.getNumeber(x, y)));
-            btn.setDisable(true);
-            
+            //Disable template numbers
+            //btn.setDisable(true);
+
         }
-        
+
         btn.setOnKeyPressed(key -> {
             KeyCode keyCode = key.getCode();
             if (!validNumbers.contains(keyCode)) {
@@ -176,13 +195,19 @@ public class SudokuUi extends Application {
             if (sudoku.getNumeber(x, y) != 0) {
                 btn.setText(String.valueOf(sudoku.getNumeber(x, y)));
             } else {
-                btn.setText("");                
-            }           
+                btn.setText("");
+            }
+            if (sudoku.isGridFull(sudoku.getGrid())) {
+                System.out.println("Grid is full.");
+                if (sudoku.isSolutionCorrect(sudoku.getGrid())) {
+                    System.out.println("Done");
+                }
+            }
         });
         
         return btn;
     }
-    
+
     public void update() {
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {
