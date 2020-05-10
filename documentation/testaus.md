@@ -17,6 +17,9 @@ Dao-luokkia on testattu vain yhden testin verran.
 LevelDao-luokkaa on testattu Hard-vaikeusateen pelialustalla. Testi hakee tietokannasta pelipohjan ja vertaa sitä testissä olevaan pohjaan.
 Tämän pitäisi onnistua sillä tietokanta sisältää vain yhden hard pohjan. 
 
+### Testikattavuus
+![testikattavuus](https://github.com/Pentza/ot-harjoitustyo/blob/master/documentation/photos/testikattavuus.png)
+
 ## Järjestelmätestaus
 
 Ohjelmaa on suoritettu manuaalisesti pelkästään Linux-ympäristössä. Ohjelma on haettu useita kertoja github-repositoriosta ja kokeilu toimintoja.
