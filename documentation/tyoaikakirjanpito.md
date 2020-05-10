@@ -13,4 +13,5 @@
 | 04.05. | 2    | Dao ja sql pisteitä varten |
 | 06.05. | 1    | Päivittelyä |
 | 07.05  | 3    | Bugien selvittelyä ja turhautumista |
-|Yht.    | 22 ||
+| 10.05  | 5    | Ihmettelyä miksi metodit ei toimi / viimeistelyä |
+|Yht.    | 27 ||
