@@ -1,4 +1,4 @@
-package TestPackage;
+package domainTest;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -98,6 +98,12 @@ public class SudokuTest {
     }
 
     @Test
+    public void setGridTest() {
+        sudoku.setGrid(testGrid);
+        assertArrayEquals(testGrid, sudoku.getGrid());
+    }
+
+    @Test
     public void getSolvedGridTest() {
         assertArrayEquals(testGrid, sudoku.getSolvedGrid());
     }
@@ -136,6 +142,15 @@ public class SudokuTest {
         assertEquals(true, sudoku.isGridFull(sudoku.getGrid()));
     }
 
+    
+    @Test
+    public void isSolutionCorrectFalse() {
+        sudoku.setGrid(hardGrid);
+        sudoku.setNumber(0, 0, 1);
+        assertEquals(false, sudoku.isSolutionCorrect(sudoku.getGrid()));
+    }
+
+     
     @Test
     public void stringToGridTest() {
         sudoku.stringToGrid("500900060000000000100406080000070006000000090010002004604000239072005000930000007");
