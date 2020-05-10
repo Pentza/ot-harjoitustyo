@@ -5,9 +5,7 @@
  */
 package domain;
 
-import domain.SudokuSolver;
 import dao.LevelDao;
-import dao.ScoreDao;
 import dao.SqlDao;
 
 /**
@@ -17,7 +15,7 @@ import dao.SqlDao;
 public class Sudoku {
 
     /**
-     * Sudoku 9 by 9 grid
+     * playable Sudoku 9 by 9 grid
      */
     private int[][] grid;
     /**
@@ -39,39 +37,12 @@ public class Sudoku {
     public Sudoku() {
         grid = new int[9][9];
         solvedGrid = new int[9][9];
-
-        ScoreDao scoredao = new SqlDao();
         leveldao = new SqlDao();
-        
-        /*grid[0][0] = 5;
-        grid[0][5] = 1;
-        grid[0][8] = 2;
-        grid[1][6] = 7;
-        grid[1][7] = 4;
-        grid[2][1] = 9;
-        grid[2][7] = 1;
-        grid[3][0] = 9;
-        grid[3][1] = 5;
-        grid[3][5] = 4;
-        grid[3][7] = 6;
-        grid[4][1] = 6;
-        grid[4][2] = 7;
-        grid[4][5] = 3;
-        grid[5][0] = 2;
-        grid[5][3] = 6;
-        grid[5][4] = 8;
-        grid[6][3] = 8;
-        grid[6][7] = 3;
-        grid[6][8] = 9;
-        grid[7][1] = 3;
-        grid[7][2] = 6;
-        grid[7][5] = 7;
-        grid[8][4] = 1;
-        grid[8][5] = 5;*/
     }
 
     /**
      * Returns Sudoku grid
+     *
      * @return grid
      */
     public int[][] getGrid() {
@@ -79,8 +50,19 @@ public class Sudoku {
     }
 
     /**
-     * Returns solved sudoku grid, doesn't work yet
-     * @return solved sudoku grid
+     * Sets grid to be parameter grid
+     *
+     * @param newGrid grid to be set
+     */
+    public void setGrid(int[][] newGrid) {
+        clearGrid();
+        grid = newGrid;
+    }
+
+    /**
+     * Returns solved Sudoku grid, doesn't work yet
+     *
+     * @return solved Sudoku grid
      */
     public int[][] getSolvedGrid() {
         return solvedGrid;
@@ -88,9 +70,10 @@ public class Sudoku {
 
     /**
      * Returns number in grid
+     *
      * @param x x-axis
      * @param y y-axis
-     * @return 
+     * @return
      */
     public int getNumeber(int x, int y) {
         return grid[y][x];
@@ -98,6 +81,7 @@ public class Sudoku {
 
     /**
      * Sets value to grid
+     *
      * @param x x-axis
      * @param y y-axis
      * @param value value to be set
@@ -107,7 +91,7 @@ public class Sudoku {
     }
 
     /**
-     * Clears every value in grid to zero
+     * Clears every value in grid and solved grid to zero
      */
     public void clearGrid() {
         for (int y = 0; y < 9; y++) {
@@ -118,9 +102,9 @@ public class Sudoku {
         }
     }
 
-
     /**
      * Checks if grid has value in every position
+     *
      * @param grid Grid to be checked
      * @return returns true if grid is full, otherwise false
      */
@@ -136,7 +120,9 @@ public class Sudoku {
     }
 
     /**
-     * Checks if grid is full and solution is correct, doesn't work correct in some cases
+     * Checks if grid is full and solution is correct, doesn't work because
+     * solved grid is always the same
+     *
      * @param grid grid to be checked
      * @return returns if solution is correct
      */
@@ -153,9 +139,10 @@ public class Sudoku {
         }
         return true;
     }
-    
+
     /**
      * Sets every number in grid to value in parameter string
+     *
      * @param string String of 81 numbers to be set as grid
      */
     public void stringToGrid(String string) {
@@ -164,15 +151,19 @@ public class Sudoku {
                 setNumber(j, i, Character.getNumericValue(string.charAt(i * 9 + j)));
             }
         }
-    } 
-    
+        solvedGrid = grid;
+    }
+
     /**
      * Gets string by parameter difficulty from database
+     *
      * @param difficulty difficulty of Sudoku
      */
     public void setGridFromDatabase(String difficulty) {
         String level = leveldao.getRandomLevel(difficulty);
         clearGrid();
         stringToGrid(level);
+
     }
+
 }
