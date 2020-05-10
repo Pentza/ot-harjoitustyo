@@ -5,13 +5,10 @@
  */
 package dao;
 
-import java.util.List;
-
 /**
  *
  * @author pewlahde
  */
-public interface ScoreDao {
-    void add(int score);
-    List<Integer> getAll();
+public interface LevelDao {
+    String getRandomLevel(String diff);
 }
