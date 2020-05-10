@@ -7,7 +7,6 @@ package ui;
 
 import domain.Sudoku;
 import domain.SudokuSolver;
-import ui.Timer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,8 +44,7 @@ public class SudokuUi extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        solver = new SudokuSolver();
+    public void start(Stage stage) {
         timer = new Timer();
         validNumbers = new ArrayList<>();
         validNumbers.add(KeyCode.DIGIT0);
@@ -97,6 +95,7 @@ public class SudokuUi extends Application {
         });
         playEasy.setOnAction(e -> {
             timer.start();
+            solver = new SudokuSolver();
             sudoku.setGridFromDatabase("easy");
             root.setCenter(drawGrid(sudoku.getGrid()));
             root.setRight(gameButtons);
@@ -104,6 +103,7 @@ public class SudokuUi extends Application {
         });
         playMedium.setOnAction(e -> {
             timer.start();
+            solver = new SudokuSolver();
             sudoku.setGridFromDatabase("medium");
             root.setCenter(drawGrid(sudoku.getGrid()));
             root.setRight(gameButtons);
@@ -111,14 +111,16 @@ public class SudokuUi extends Application {
         });
         playHard.setOnAction(e -> {
             timer.start();
+            solver = new SudokuSolver();
             sudoku.setGridFromDatabase("hard");
             root.setCenter(drawGrid(sudoku.getGrid()));
             root.setRight(gameButtons);
             root.setTop(gameTime);
-            
+
         });
         clear.setOnAction(e -> {
             sudoku.clearGrid();
+            solved.setText("");
             this.update();
         });
         check.setOnAction(e -> {
@@ -157,16 +159,10 @@ public class SudokuUi extends Application {
     public GridPane drawGrid(int[][] grid) {
         GridPane board = new GridPane();
         board.setAlignment(Pos.CENTER);
-        //board.setPadding(new Insets(10,10,10,10));
         buttons = new Button[9][9];
-
+        solved.setText("");
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
-//                Rectangle btn = new Rectangle(40, 40);
-//                Text txt = new Text(String.valueOf(grid[row][column]));
-//                btn.setFill(null);
-//                btn.setStroke(Color.BLACK);
-
                 Button btn = createButton(column, row);
                 buttons[row][column] = btn;
                 board.add(btn, column, row);
@@ -181,9 +177,6 @@ public class SudokuUi extends Application {
         btn.setFont(Font.font(18));
         if (sudoku.getNumeber(x, y) != 0) {
             btn.setText(String.valueOf(sudoku.getNumeber(x, y)));
-            //Disable template numbers
-            //btn.setDisable(true);
-
         }
 
         btn.setOnKeyPressed(key -> {
@@ -197,8 +190,9 @@ public class SudokuUi extends Application {
             } else {
                 btn.setText("");
             }
+
         });
-        
+
         return btn;
     }
 
