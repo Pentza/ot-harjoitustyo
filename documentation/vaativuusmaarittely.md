@@ -20,4 +20,5 @@ SudokuSoveelus on sudokupeliin perustuva ohjelma. Ohjelmassa voi pelata muutamia
 
 - visuaalinen sudoku solver // solver toimii(muutamaa bugia lukuunottamatta), ei visuaalinen
 - sudokupohjia verkossa (helppo, keskivaikea, vaikea) // tietokanta olemassa, verkosta nämä voisi ottaa esim google docsista, kunhan pohjat ovat 81 merkkisiä numerojonoja
+- Miellyttävämpi UI
 
