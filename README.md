@@ -24,7 +24,7 @@ mvn test
 Testikattavuusraportti luodaan komennolla  
 
 ```
-mvn jacoco:report
+mvn test jacoco:report
 ```
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedoston target/site/jacoco/index.html  
