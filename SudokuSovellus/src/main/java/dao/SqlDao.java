@@ -52,7 +52,8 @@ public class SqlDao implements ScoreDao, LevelDao {
 
     /**
      * Creates database if it doesn't exist
-     * @throws SQLException 
+     *
+     * @throws SQLException
      */
     public void createIfNotExist() throws SQLException {
         try {
@@ -74,6 +75,7 @@ public class SqlDao implements ScoreDao, LevelDao {
 
     /**
      * Adds score to database
+     *
      * @param score score to be added
      */
     @Override
@@ -83,6 +85,7 @@ public class SqlDao implements ScoreDao, LevelDao {
 
     /**
      * Returns list of scores in database
+     *
      * @return list of scores
      */
     @Override
@@ -92,6 +95,7 @@ public class SqlDao implements ScoreDao, LevelDao {
 
     /**
      * Gets random level from database
+     *
      * @param diff difficulty of the level
      * @return returns level string
      */
@@ -107,7 +111,7 @@ public class SqlDao implements ScoreDao, LevelDao {
             ResultSet rs = stmt.executeQuery();
             level = rs.getString("Level");
         } catch (Exception e) {
-            
+
         }
         return level;
     }
