@@ -11,10 +11,27 @@ package domain;
  */
 public class SudokuSolver {
 
+    /**
+     * Checks if number is valid by row, column and subsection
+     *
+     * @param board Sudoku-board
+     * @param row Row in grid
+     * @param column Column in grid
+     * @param value Value to be checked
+     * @return returns if number is valid
+     */
     public boolean isValid(int[][] board, int row, int column, int value) {
         return (checkRow(board, row, value) && checkColumn(board, column, value) && checkSubsection(board, row, column, value));
     }
 
+    /**
+     * Checks row if value is valid
+     *
+     * @param board Sudoku-board
+     * @param row Row in grid
+     * @param value Value to be checked
+     * @return returns if number is valid
+     */
     public boolean checkRow(int[][] board, int row, int value) {
         for (int i = 0; i < 9; i++) {
             if (board[row][i] == value) {
@@ -24,6 +41,14 @@ public class SudokuSolver {
         return true;
     }
 
+    /**
+     * Checks column if value is valid
+     *
+     * @param board Sudoku-board
+     * @param column Column in grid
+     * @param value Value to be checked
+     * @return returns if number is valid
+     */
     public boolean checkColumn(int[][] board, int column, int value) {
         for (int i = 0; i < 9; i++) {
             if (board[i][column] == value) {
@@ -33,6 +58,15 @@ public class SudokuSolver {
         return true;
     }
 
+    /**
+     * Checks subsection if value is valid
+     *
+     * @param board Sudoku-board
+     * @param row Row in grid
+     * @param column Column in grid
+     * @param value Value to be checked
+     * @return returns if number is valid
+     */
     public boolean checkSubsection(int[][] board, int row, int column, int value) {
         for (int i = row - row % 3; i < row - row % 3 + 3; i++) {
             for (int j = column - column % 3; j < column - column % 3 + 3; j++) {
@@ -43,7 +77,13 @@ public class SudokuSolver {
         }
         return true;
     }
-    
+
+    /**
+     * Main method to solve grid
+     *
+     * @param board board to be solved
+     * @return returns if Sudoku is solvable
+     */
     public boolean solve(int[][] board) {
         boolean filled = true;
         for (int i = 0; i < 9; i++) {
@@ -54,11 +94,11 @@ public class SudokuSolver {
                         if (isValid(board, i, j, n)) {
                             board[i][j] = n;
                             solve(board);
-                            if (sudokuContainsZeros(board)) {
+                            if (boardContainsZeros(board)) {
                                 board[i][j] = 0;
                             }
                         }
-                        
+
                     }
                     break;
                 }
@@ -67,13 +107,19 @@ public class SudokuSolver {
                 break;
             }
         }
-        return !sudokuContainsZeros(board);
+        return !boardContainsZeros(board);
     }
-    
-     public boolean sudokuContainsZeros(int[][] sudoku) {
+
+    /**
+     * Checks if board contains zeros
+     *
+     * @param board Board to be checked
+     * @return returns if board has zeros
+     */
+    public boolean boardContainsZeros(int[][] board) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (sudoku[i][j] == 0) {
+                if (board[i][j] == 0) {
                     return true;
                 }
             }
