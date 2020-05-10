@@ -197,12 +197,6 @@ public class SudokuUi extends Application {
             } else {
                 btn.setText("");
             }
-            if (sudoku.isGridFull(sudoku.getGrid())) {
-                System.out.println("Grid is full.");
-                if (sudoku.isSolutionCorrect(sudoku.getGrid())) {
-                    System.out.println("Done");
-                }
-            }
         });
         
         return btn;
